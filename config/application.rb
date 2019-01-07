@@ -32,6 +32,12 @@ module ListOfIngredients
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
+    # One downside to ActiveAdmin using inherited_resources, which reduces the 
+    # boilerplate for Rails controllers, is that Rails then uses it when you 
+    # scaffold anything in your app. That breaks stuff. Tell Rails to use the 
+    # regular scaffolding process. You know, from the good old days
+    config.app_generators.scaffold_controller = :scaffold_controller
+
     # Middleware for ActiveAdmin
     config.middleware.use Rack::MethodOverride
     config.middleware.use ActionDispatch::Flash
